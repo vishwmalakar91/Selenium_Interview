@@ -24,8 +24,10 @@ public class BrokenLinks {
         int respCode = 200;
         
         System.setProperty("java.net.useSystemProxies", "true");
+        
 		String current_path =System.getProperty("user.dir");
 		System.setProperty("webdriver.chrome.driver",current_path+"\\Drivers\\chromedriver.exe");
+		
         driver = new ChromeDriver();
         
         

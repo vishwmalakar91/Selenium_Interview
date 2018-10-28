@@ -1,24 +1,28 @@
-import static org.junit.Assert.*;
+package interview;
+
 import java.util.concurrent.TimeUnit;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 public class Waits {
 
        // created reference variable for WebDriver
        WebDriver drv;
-       @Before
+       @BeforeTest
        public void setup() throws InterruptedException {
 
+   		String current_path =System.getProperty("user.dir");
+   		System.setProperty("webdriver.chrome.driver",current_path+"\\Drivers\\chromedriver.exe");
               // initializing drv variable using FirefoxDriver
-              drv=new FirefoxDriver();
+              drv=new ChromeDriver();
               // launching gmail.com on the browser
               drv.get("https://gmail.com");
               // maximized the browser window
@@ -49,7 +53,7 @@ public class Waits {
        drv.findElement(By.xpath("//div[contains(text(),'COMPOSE')]")).click();
        }
 
-       @After
+       @AfterTest
        public void teardown() {
        // closes all the browser windows opened by web driver
    drv.quit();     
